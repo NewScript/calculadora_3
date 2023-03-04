@@ -1,0 +1,10 @@
+{
+  "name": "calculadora",
+  "version": "1.0.0",
+  "description": "",
+  "main": "calculadora.mjs",
+  "type": "module",
+  "scripts": {},
+  "author": "Carlos",
+  "dependencies": {}
+}

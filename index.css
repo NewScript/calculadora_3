@@ -1,0 +1,114 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    box-sizing: border-box;
+}
+
+#app{
+    margin-top: 15px;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ------------------------------------- */
+
+#calculator{
+    width: 250px;
+    height: 400px;
+    border: 1px solid #000;
+    padding: 3px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* ------------------------------------- */
+
+#title{
+    height: 10%;
+    margin: 0px auto 3px auto;
+    background-color: cornflowerblue;
+}
+
+#applicationName{
+    font-size: 30px;
+}
+
+#viewCalculations, #operations{
+    padding: 3px;
+}
+
+#viewCalculations{
+    width: 100%;
+    height: 30%;
+    background: chocolate;
+
+    margin-bottom: 3px;
+    padding: 3px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    overflow: hidden;
+}
+
+#calculationFormulation{
+    margin-bottom: 3px;
+    font-size: 15px;
+    text-align: right;
+    width: 100%;
+    height: 70%;
+    resize: none;
+}
+
+#numberPresentation{
+    font-size: 30px;
+    text-align: right;
+    background-color: darkgrey;
+    width: 100%;
+    height: 30%;
+}
+
+#numberPresentation{
+    font-size: 30px;
+    background-color: darkgrey;
+
+}
+
+#operations{
+    width: 100%;
+    height: 60%;
+    background: rgb(22, 158, 40);
+    padding: 3px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+}
+
+/* ------------------------------------- */
+
+.button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    user-select: none;
+}
+
+.button:hover{
+    background: rgb(109, 187, 86);
+    cursor: pointer;
+}
+
+.action:hover, .operator:hover{
+    background: rgb(223, 95, 106);
+}
+
+#comma:hover, #signalChange:hover{
+    background: rgb(210, 224, 76);
+}

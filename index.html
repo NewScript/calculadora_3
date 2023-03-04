@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <script type="module" defer src="./calculator.mjs"></script>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <div id="app">
+        <div id="calculator">
+            <div id="title">
+                <h1 id='applicationName'>CALCULADORA</h1>
+            </div>
+            <div id="viewCalculations">
+                <textarea id="calculationFormulation" readonly>0</textarea>
+                <label id="numberPresentation">0</label>
+            </div>
+            <div id="operations">
+                <div class="button action" id="allClear">AC</div>
+                <div class="button action" id="clear">C</div>
+                <div class="button action" id="backSpace">BS</div>
+                <div class="button operator" id="sum">+</div>
+                <div class="button operand">7</div>
+                <div class="button operand">8</div>
+                <div class="button operand">9</div>
+                <div class="button operator"id="subtraction">-</div>
+                <div class="button operand">4</div>
+                <div class="button operand">5</div>
+                <div class="button operand">6</div>
+                <div class="button operator" id="division">/</div>
+                <div class="button operand">1</div>
+                <div class="button operand">2</div>
+                <div class="button operand">3</div>
+                <div class="button operator" id="multiplication">*</div>
+                <div class="button" id="signalChange">+/-</div>
+                <div class="button operand">0</div>
+                <div class="button" id="comma">,</div>
+                <div class="button operator" id="result">=</div>
+            </div>
+        </div>
+    </div> 
+</body>
+</html>

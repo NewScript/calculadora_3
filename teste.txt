@@ -1,0 +1,54 @@
+/** 
+
+function calcularArray(arr) {
+  let resultado = arr[0];
+  for (let i = 1; i < arr.length; i += 2) {
+    const operador = arr[i];
+    const valor = arr[i + 1];
+
+    if (operador === '+') {
+      resultado += valor;
+    } else if (operador === '-') {
+      resultado -= valor;
+    } else if (operador === '*') {
+      resultado *= valor;
+    } else if (operador === '/') {
+      resultado /= valor;
+    }
+  }
+
+  return resultado;
+}
+
+//Nesta função da para trocar o if por switch
+
+const arr = [10, '*', 2, '+', 5, '/', 2];
+const resultado = calcularArray(arr); // retorna 12.5
+
+function calcularArray(arr) {
+  let resultado = arr[0];
+  for (let i = 1; i < arr.length; i += 2) {
+    const operador = arr[i];
+    const valor = arr[i + 1];
+
+    switch (operador) {
+      case '+':
+        resultado += valor;
+        break;
+      case '-':
+        resultado -= valor;
+        break;
+      case '*':
+        resultado *= valor;
+        break;
+      case '/':
+        resultado /= valor;
+        break;
+      default:
+        break;
+    }
+  }
+
+  return resultado;
+}
+*/
