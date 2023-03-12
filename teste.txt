@@ -1,54 +1,20 @@
-/** 
+O problema provavelmente está relacionado ao uso de índices de array dentro dos 
+loops for. Os loops acessam elementos do array expression utilizando índices que 
+podem estar incorretos após uma operação anterior de remoção de elementos do array.
 
-function calcularArray(arr) {
-  let resultado = arr[0];
-  for (let i = 1; i < arr.length; i += 2) {
-    const operador = arr[i];
-    const valor = arr[i + 1];
+Por exemplo, no loop que lida com a multiplicação (*), o código atualiza o elemento
+ no índice i-1 do array e remove os elementos nos índices i e i+1 usando a função
+  splice(). Se a multiplicação for realizada em um índice próximo ao final do
+   array, a remoção de elementos pode fazer com que os índices subsequentes mudem,
+    resultando em uma atualização incorreta do valor.
 
-    if (operador === '+') {
-      resultado += valor;
-    } else if (operador === '-') {
-      resultado -= valor;
-    } else if (operador === '*') {
-      resultado *= valor;
-    } else if (operador === '/') {
-      resultado /= valor;
-    }
-  }
+Uma maneira de corrigir isso seria utilizar um loop while em vez de um loop for 
+e atualizar o valor de i dinamicamente após cada operação que remove elementos 
+do array. Outra opção seria criar um novo array com os resultados das operações
+ anteriores e usá-lo como entrada para as operações subsequentes.
 
-  return resultado;
-}
-
-//Nesta função da para trocar o if por switch
-
-const arr = [10, '*', 2, '+', 5, '/', 2];
-const resultado = calcularArray(arr); // retorna 12.5
-
-function calcularArray(arr) {
-  let resultado = arr[0];
-  for (let i = 1; i < arr.length; i += 2) {
-    const operador = arr[i];
-    const valor = arr[i + 1];
-
-    switch (operador) {
-      case '+':
-        resultado += valor;
-        break;
-      case '-':
-        resultado -= valor;
-        break;
-      case '*':
-        resultado *= valor;
-        break;
-      case '/':
-        resultado /= valor;
-        break;
-      default:
-        break;
-    }
-  }
-
-  return resultado;
-}
-*/
+Além disso, vale lembrar que a ordem de operações deve ser levada em consideração
+ ao lidar com expressões matemáticas. No código fornecido, todas as operações são
+  executadas da esquerda para a direita, o que pode levar a resultados incorretos
+   em algumas expressões mais complexas. Uma solução seria adicionar suporte para
+    parênteses na expressão e avaliá-los antes de executar as operações aritméticas.

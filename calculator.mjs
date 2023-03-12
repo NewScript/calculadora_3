@@ -32,7 +32,7 @@ const comma = document.getElementById('comma');
 
 const globalVariables = {
     numberOfCharactersAllowed: 10,
-    formattedNumbers: '',
+    expression: '',
     values: [],
     operators: [],
     result: [] 
@@ -181,58 +181,74 @@ function calculateExpression(event){
 }
 
 function calculate(){
-    const temporaryValues = globalVariables.values.map(element => {
-        return element.replace(',','.')
+    const stringText = viewCalculation.calculationFormulation.textContent
+    const expressionRegex = /[\+\-\d,.]+|[+\-*/]/g
+    let expression = stringText.match(expressionRegex);
+    
+    expression = expression.map(element => {
+        return element.replace('.','').replace(',','.')
     })
 
-    const capturingIndexesPreviousOperations = []
-    globalVariables.operators.forEach((element, index) => {
-        if(element === 'multiplication' || element === 'division'){
-            capturingIndexesPreviousOperations.push(index)
-        }
-    })
-
-    console.log('-----')
-
-    console.log(temporaryValues, capturingIndexesPreviousOperations)
     
-    for(let i = 0; i < capturingIndexesPreviousOperations.length; i++){
-        console.log(globalVariables.operators[capturingIndexesPreviousOperations[i]])
-    }
+    console.log(expression)
 
-    for(let i = 0; i < capturingIndexesPreviousOperations.length; i++){
-        console.log(`operations[${globalVariables.operators[capturingIndexesPreviousOperations[i]]}]`)
-        console.log(`Parâmetros: (${temporaryValues[capturingIndexesPreviousOperations[i]]}, ${temporaryValues[capturingIndexesPreviousOperations[i]+1]})`)
-    }
-
-    console.log('-----')
-
-    console.log(temporaryValues)
-    
-    for(let i = 0; i < capturingIndexesPreviousOperations.length; i++){
-        let parametros = []
-        let operation = globalVariables.operators[capturingIndexesPreviousOperations[i]]
-        parametros = (`${temporaryValues[capturingIndexesPreviousOperations[i]]},
-                        ${temporaryValues[capturingIndexesPreviousOperations[i]+1]}`)
-                        .split(',')
-        globalVariables.result.push(operations[operation](parametros))
-    }
-
-    for(let i = 0; i < capturingIndexesPreviousOperations.length; i++){
-        if(i === 0){
-            temporaryValues.splice(capturingIndexesPreviousOperations[i],2)
-            continue
+    for(let i = 0; i < expression.length; i++){
+        let result = 1;
+        if(expression[i] === '*'){
+            result = operations.multiplication(
+                [expression[i - 1], expression[i + 1]])
+                console.log(expression[i - 1], expression[i + 1])
+                expression[i - 1] = result
+                expression.splice(i, 2)
+                i--
         }
-        temporaryValues.splice(capturingIndexesPreviousOperations[i] - (i * 2), 2)
     }
 
+    for(let i = 0; i < expression.length; i++){
+        let result = 1;
+        if(expression[i] === '/'){
+            result = operations.division(
+                [expression[i - 1], expression[i + 1]])
+                console.log(expression[i - 1], expression[i + 1])
+                expression[i - 1] = result
+                expression.splice(i, 2)
+                i--
+        }
+    }
 
+    for(let i = 0; i < expression.length; i++){
+        let result = 0;
+        if(expression[i] === '+'){
+            result = operations.sum(
+                [expression[i - 1], expression[i + 1]])
+                console.log(expression[i - 1], expression[i + 1])
+                expression[i - 1] = result
+                expression.splice(i, 2)
+                i--
+        }
+    }
 
-       
-    console.log(temporaryValues)
+    for(let i = 0; i < expression.length; i++){
+        let result = 0;
+        if(expression[i] === '-'){
+            result = operations.subtraction(
+                [expression[i - 1], expression[i + 1]])
+                console.log(expression[i - 1], expression[i + 1])
+                expression[i - 1] = result
+                expression.splice(i, 2)
+                i--
+        }
+    }
 
-    console.log(globalVariables.result)
+    console.log(expression)
+    console.log(expression.length)
 
+    viewCalculation.numberPresentation.textContent = expression
+
+    /**
+   
+    
+    */
 }
 
 //--------------------------------------------------------
